@@ -8,12 +8,13 @@ import androidx.compose.ui.unit.dp
 import com.halilibo.richtext.markdown.Markdown
 import com.halilibo.richtext.ui.RichText
 import io.hsar.joinedupthinking.ui.AppState
+import io.hsar.joinedupthinking.ui.link.joinUpLinks
 
 @Composable
 fun RendererColumn(appState: AppState, modifier: Modifier = Modifier) {
     RichText(
         modifier = modifier.height(50.dp).padding(10.dp),
     ) {
-        Markdown(appState.editorText.value)
+        Markdown(appState.editorText.value.joinUpLinks())
     }
 }
