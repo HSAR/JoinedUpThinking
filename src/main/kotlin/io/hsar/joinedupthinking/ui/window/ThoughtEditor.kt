@@ -52,8 +52,8 @@ fun ThoughtEditor(code: MutableState<String>, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ThoughtEditorWindow(state: AppState) {
-    Window(onCloseRequest = {}, title = "JoinedUpThinking") {
+fun ThoughtEditorWindow(state: AppState, onCloseRequest: () -> Unit = {}) {
+    Window(onCloseRequest = onCloseRequest, title = "JoinedUpThinking") {
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth().height(50.dp).padding(10.dp),
