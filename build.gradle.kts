@@ -7,8 +7,8 @@ plugins {
     id("org.jetbrains.compose") version "1.1.1"
 }
 
-group = "me.resea"
-version = "1.0"
+group = "io.hsar"
+version = "0.0.1"
 
 repositories {
     google()
@@ -19,7 +19,8 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
-    implementation("com.fifesoft:rsyntaxtextarea:3.2.0")
+    implementation("com.fifesoft", "rsyntaxtextarea", "3.2.0")
+    implementation("com.halilibo.compose-richtext", "richtext-commonmark", "0.11.0")
 }
 
 tasks.test {
