@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import androidx.compose.ui.graphics.Color
@@ -26,7 +25,7 @@ import javax.swing.JPanel
 var rtCodeEditor: RTextScrollPane? = null
 
 @Composable
-fun Editor(code: MutableState<String>, modifier: Modifier = Modifier) {
+fun Editor(state: AppState, modifier: Modifier = Modifier) {
     if (rtCodeEditor == null) {
         // create the scrollpane only once. Otherwise when text area value is
         // changed, the compose function is called from addCaretListener,
@@ -39,8 +38,8 @@ fun Editor(code: MutableState<String>, modifier: Modifier = Modifier) {
         textArea.antiAliasingEnabled = true
 
         val sp = RTextScrollPane(textArea)
-        sp.textArea.text = code.value
-        sp.textArea.addCaretListener { code.value = sp.textArea.text }
+        sp.textArea.text = state.editorText.value
+        sp.textArea.addCaretListener { state.editorText.value = sp.textArea.text }
 
         rtCodeEditor = sp
     }
@@ -72,6 +71,6 @@ fun EditorColumn(state: AppState, modifier: Modifier = Modifier) {
             ImageButton("settings.png") { state.showSettings = true }
         }
 
-        Editor(state.editorText, modifier = modifier.fillMaxSize())
+        Editor(state, modifier = modifier.fillMaxSize())
     }
 }

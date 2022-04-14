@@ -14,13 +14,16 @@ repositories {
     google()
     mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
     testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
+
     implementation("com.fifesoft", "rsyntaxtextarea", "3.2.0")
-    implementation("com.halilibo.compose-richtext", "richtext-commonmark", "0.11.0")
+//    implementation("org.jetbrains","markdown","0.3.1")
+//    implementation("com.halilibo.compose-richtext", "richtext-commonmark", "0.11.0")
 }
 
 tasks.test {
