@@ -7,5 +7,5 @@ import io.hsar.joinedupthinking.ui.AppState
 
 @Composable
 fun RendererColumn(appState: AppState, modifier: Modifier = Modifier) {
-    Text(appState.currentThought.text, modifier) // TODO: Upgrade
+    Text(WRITER.writeValueAsString(appState.currentThought), modifier) // TODO: Upgrade
 }

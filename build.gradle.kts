@@ -24,6 +24,13 @@ dependencies {
     implementation("com.fifesoft", "rsyntaxtextarea", "3.2.0")
 //    implementation("org.jetbrains","markdown","0.3.1")
 //    implementation("com.halilibo.compose-richtext", "richtext-commonmark", "0.11.0")
+
+    implementation(enforcedPlatform("com.fasterxml.jackson:jackson-bom:2.13.2"))
+    implementation("com.fasterxml.jackson.core", "jackson-core")
+    implementation("com.fasterxml.jackson.module", "jackson-module-kotlin")
+    implementation("com.fasterxml.jackson.datatype", "jackson-datatype-jsr310")
+    implementation("com.fasterxml.jackson.datatype", "jackson-datatype-jdk8")
+
 }
 
 tasks.test {

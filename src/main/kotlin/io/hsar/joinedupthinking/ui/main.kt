@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
+import io.hsar.joinedupthinking.model.TextSection
+import io.hsar.joinedupthinking.model.Thought
 import io.hsar.joinedupthinking.ui.AppState
 import io.hsar.joinedupthinking.ui.EditorColumn
 import io.hsar.joinedupthinking.ui.rememberAppState
@@ -36,3 +38,5 @@ fun MainWindow(state: AppState, onCloseRequest: () -> Unit = {}) {
         }
     }
 }
+
+val WELCOME_THOUGHT = Thought(id = "welcome", sections = listOf(TextSection(title = "Get Started", "Just start typing!")))

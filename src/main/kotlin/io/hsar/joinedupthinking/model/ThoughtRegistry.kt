@@ -1,6 +1,6 @@
 package io.hsar.joinedupthinking.model
 
-class ThoughtRegistry(private val internalMap: MutableMap<String, Thought> = mutableMapOf()) {
+class ThoughtRegistry(private val internalMap: MutableMap<String, Thought> = mutableMapOf()) : Iterable<Thought> by internalMap.values {
 
     fun put(value: Thought) {
         val key = value.id

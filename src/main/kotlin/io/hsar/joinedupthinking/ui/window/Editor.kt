@@ -25,7 +25,7 @@ import javax.swing.JPanel
 var rtCodeEditor: RTextScrollPane? = null
 
 @Composable
-fun Editor(state: AppState, modifier: Modifier = Modifier) {
+fun Editor(state: AppState, onEditorTextChange: (String) -> Unit = {}, modifier: Modifier = Modifier) {
     if (rtCodeEditor == null) {
         // create the scrollpane only once. Otherwise when text area value is
         // changed, the compose function is called from addCaretListener,
@@ -38,9 +38,9 @@ fun Editor(state: AppState, modifier: Modifier = Modifier) {
         textArea.antiAliasingEnabled = true
 
         val sp = RTextScrollPane(textArea)
-        sp.textArea.text = state.editorText.value
-        sp.textArea.addCaretListener { state.editorText.value = sp.textArea.text }
-
+        sp.textArea.text = state.currentEditorText
+        sp.textArea.addCaretListener { state.currentEditorText = sp.textArea.text }
+        updateCurrentThought(state, sp.textArea.text)
         rtCodeEditor = sp
     }
 
@@ -71,6 +71,6 @@ fun EditorColumn(state: AppState, modifier: Modifier = Modifier) {
             ImageButton("settings.png") { state.showSettings = true }
         }
 
-        Editor(state, modifier = modifier.fillMaxSize())
+        Editor(state, onEditorTextChange = { editorText -> updateCurrentThought(state, editorText) }, modifier = modifier.fillMaxSize())
     }
 }
